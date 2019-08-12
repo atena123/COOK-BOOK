@@ -1,0 +1,51 @@
+{% extends 'base.html' %} 
+
+    {% block content %}
+    
+    
+    <h3>{{recipe.recipe_name}}</h3>
+    
+    <div class="row">
+        <div class="col s4"
+        <p>Preparation Time: {{recipe.preparation_time}}</p>
+        </div>
+        <div class="col s4"
+        <p>Cooking Time: {{recipe.cooking_time}}</p>
+        </div>
+        <div class="col s4"
+        <p>Servings: {{recipe.servings}}</p>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col s12"
+        <h4>Ingredients:</h4> 
+        {{recipe.recipe_ingredients}}
+        </div>
+        <div class="col s12"
+        <h4>Description:</h4>
+        {{recipe.recipe_description}}
+        </div>
+        <div class="col s12"
+        <h4>Method:</h4>
+        {{recipe.recipe_method}}
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col s6"
+        <p>Cusine:<p> 
+        {{recipe.cusine_name}}
+        </div>
+        <div class="col s6"
+        <p>Category:<p>
+        {{recipe.category_name}}
+        </div>
+    </div>
+    
+    
+    <a href="" class="waves-effect waves-light btn"><i class="material-icons right">edit</i>EDIT RECIPE</a>
+    
+    
+    {% endblock %}
+    

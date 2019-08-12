@@ -1,0 +1,38 @@
+
+
+body {
+    background: url("../images/online_book.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+
+h3, h6 {
+    text-align: center;
+}
+
+/*-------------------------Home Page--------------------*/
+
+.button {
+    height: 24px;
+    width: 80px;
+    line-height: 24px;
+    margin: 6px 6px;
+    padding: 0 0.5em;
+
+}
+
+.home_buttons {
+    padding-left: 500px;
+}
+
+
+
+
+/*-------------------------Add Recipe Page---------------*/
+
+.add_recipe_button {
+    text-align: center;
+}
