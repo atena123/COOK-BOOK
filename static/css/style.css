@@ -36,3 +36,15 @@ h3, h6 {
 .add_recipe_button {
     text-align: center;
 }
+
+/*-------------------------Edit Recipe Page---------------*/
+
+.edit_recipe_button {
+    text-align: center;
+}
+
+/*------------------------View Recipe Button--------------*/
+
+.view_recipe-button {
+    text-align: center;
+}
