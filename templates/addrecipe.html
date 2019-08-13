@@ -4,7 +4,7 @@
     <h3>Add New Recipe</h3>
     
     <div class="row">
-        <form  action="{{ url_for('insert_recipe') }}" method="POST" class="col s12">
+        <form  action="{{url_for('insert_recipe')}}" method="POST" class="col s12">
             <div class="row">
                 <div class="input-field col s9">
                     <i class="material-icons prefix">assignment</i>
@@ -63,7 +63,7 @@
                 
                 <div class="input-field col s3">
                     <i class="material-icons prefix">group</i>
-                    <input id="servings" name="servings" type="text" class="validate">
+                    <input id="recipe_servings" name="recipe_servings" type="text" class="validate">
                     <label for="icon_prefix">Servings</label>
                 </div>
                 
@@ -82,4 +82,4 @@
     </form>
 </div>
     
-     {% endblock %}
+    {% endblock %}

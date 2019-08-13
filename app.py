@@ -46,8 +46,13 @@ def edit_recipe(recipe_id):
   return render_template('editrecipe.html', recipe=this_recipe,
                             categories=all_my_categories)
                             
+@app.route('/delete_recipe/<recipe_id>')
+def delete_recipe(recipe_id):
+  mongo.db.recipes.remove({'_id': ObjectId(recipe_id)})
+  return redirect(url_for('get_recipes'))
+                            
 
-@app.route('/update_recipe/<recipe_id', methods= ['POST'])
+@app.route('/update_recipe/<recipe_id>', methods= ['POST'])
 def update_recipe(recipe_id):
   recipes=mongo.db.find()
   recipes.update({"_id": ObjectId(recipe_id)},
