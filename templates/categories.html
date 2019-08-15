@@ -5,7 +5,7 @@
     <h3>CATEGORIES</h3>
     
     <div class="row">
-    <a href="" class="waves-effect waves-light btn"><i class="material-icons right">edit</i>EDIT CATEGORY</a>
+    <a href="" class="waves-effect waves-light btn"><i class="material-icons right">edit</i>ADD CATEGORY</a>
     </div>    
     <ul class="collapsible" data-collapsible="accordion">
       {% for category in categories %}
@@ -16,7 +16,7 @@
         </div>
         <div class="col s3 home_buttons">
            <a href="{{url_for('edit_category', category_id=category._id)}}" class="waves-effect waves-light btn button blue">EDIT</a>
-           <a href="{{url_for('delete_category, category_id=category._id)}}" class="waves-effect waves-light btn button red">REMOVE</a>
+           <a href="{{url_for('delete_category', category_id=category._id)}}" class="waves-effect waves-light btn button red">REMOVE</a>
         </div>
       </div>
     </li>
