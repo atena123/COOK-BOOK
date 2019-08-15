@@ -5,7 +5,7 @@
     <h3>CATEGORIES</h3>
     
     <div class="row">
-    <a href="" class="waves-effect waves-light btn"><i class="material-icons right">edit</i>ADD CATEGORY</a>
+    <a href="{{ url_for('new_category') }}" class="waves-effect waves-light btn"><i class="material-icons right">edit</i>ADD CATEGORY</a>
     </div>    
     <ul class="collapsible" data-collapsible="accordion">
       {% for category in categories %}
