@@ -9,7 +9,7 @@
     
     
     <div class="row">
-    <a href="{{url_for('add_recipe')}}" class="waves-effect waves-light btn"><i class="material-icons right">edit</i>ADD RECIPE</a>
+    <a href="{{url_for('add_recipe')}}" class="waves-effect waves-light btn"><i class="material-icons right">edit</i>ADD NEW RECIPE</a>
     </div>   
         
     <ul class="collapsible" data-collapsible="accordion">
@@ -19,7 +19,7 @@
         <div class="col s9">
           <strong>{{recipe.recipe_name}}</strong> - {{recipe.category_name}}
         </div>
-        <div class="home_buttons col s3">
+        <div class="col s3 home_buttons">
            <a href="{{url_for('view_recipe', recipe_id=recipe._id)}}" class="waves-effect waves-light btn button blue">VIEW</a>
            <a href="{{url_for('delete_recipe', recipe_id=recipe._id)}}" class="waves-effect waves-light btn button red">REMOVE</a>
         </div>

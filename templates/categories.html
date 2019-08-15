@@ -1,0 +1,26 @@
+{% extends 'base.html' %} 
+
+    {% block content %}
+    
+    <h3>CATEGORIES</h3>
+    
+    <div class="row">
+    <a href="" class="waves-effect waves-light btn"><i class="material-icons right">edit</i>ADD NEW CATEGORY</a>
+    </div>    
+    <ul class="collapsible" data-collapsible="accordion">
+      {% for category in categories %}
+    <li>
+      <div class="collapsible-header">
+        <div class="col s9">
+          {{category.category_name}}
+        </div>
+        <div class="col s3 home_buttons">
+           <a href="" class="waves-effect waves-light btn button blue">VIEW</a>
+           <a href="" class="waves-effect waves-light btn button red">REMOVE</a>
+        </div>
+      </div>
+    </li>
+      {% endfor %}
+    </ul>
+    
+    {% endblock %}
