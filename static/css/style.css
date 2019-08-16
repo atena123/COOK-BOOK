@@ -5,7 +5,6 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    background-attachment: fixed;
 }
 
 
@@ -13,7 +12,7 @@ h3, h6 {
     text-align: center;
 }
 
-/*-------------------------Home Page--------------------*/
+/*-------------------------Home Page Small Buttons--------------------*/
 
 .button {
     height: 24px;
@@ -24,28 +23,68 @@ h3, h6 {
 
 }
 
-.home_buttons {
+.small-buttons {
     text-align: right;
-    padding-left: 500px;
+}
+
+.view-button {
+    background-color: #5DADE2;
+}
+
+.remove-button {
+    background-color: #EC7063; 
 }
 
 
-
-
-/*-------------------------Add Recipe Page---------------*/
+/*-------------------------Big Buttons---------------*/
 
 .add_recipe_button {
     text-align: center;
 }
-
-/*-------------------------Edit Recipe Page---------------*/
-
 .update_recipe_button {
     text-align: center;
 }
-
-/*------------------------View Recipe Page----------------*/
-
 .edit_recipe_button {
     text-align: center;
+}
+
+
+/*-------------------------Navbar-------------------------*/
+.navbar {
+    margin: 0;
+    padding: 0;
+}
+
+.bg-color-navbar {
+    background-color: #E99D6B;
+}
+
+.navbar-default .navbar-brand {
+    color: #F1EEEC;
+    padding-top: 25px;
+    font-size: 22px;
+    transition: color 0.7s ease-in-out;
+    -o-transition: color 0.7s ease-in-out;
+    -moz-transition: color 0.7s ease-in-out;
+    -webkit-transition: color 0.7s ease-in-out;
+}
+
+
+.navbar-default .navbar-brand:hover {
+    color: #3B3B3A;
+}
+
+
+.navbar-default .navbar-nav>li>a {
+    color: #F1EEEC;
+    padding-top: 25px;
+    transition: color 0.7s ease-in-out;
+    -o-transition: color 0.7s ease-in-out;
+    -moz-transition: color 0.7s ease-in-out;
+    -webkit-transition: color 0.7s ease-in-out;
+ }
+  
+    
+.navbar-default .navbar-nav>li>a:hover {
+    color: #3B3B3A;
 }
