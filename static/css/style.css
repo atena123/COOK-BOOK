@@ -11,6 +11,31 @@ h3, h6 {
     text-align: center;
 }
 
+h1 {
+    text-align: center;
+    margin-top: 200px;
+}
+
+.login-form {
+    text-align: center;
+    padding-top: 20px;
+}
+
+/*------------------------View Page-----------------------*/
+
+.heading {
+    text-align: center;
+}
+
+.large-heading {
+    font-size: 20px;
+    padding-top: 20px;
+}
+
+.small-headings {
+    padding-top: 20px;
+}
+
 /*-------------------------Small Buttons--------------------*/
 
 .button {
@@ -52,9 +77,13 @@ h3, h6 {
 
 
 .add_recipe_button,
-.update_recipe_button,
+.update_recipe_button {
+    text-align: center;
+}
+
 .edit_recipe_button {
     text-align: center;
+    padding-top: 35px;
 }
 
 

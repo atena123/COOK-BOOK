@@ -1,9 +1,10 @@
 import os
-from flask import Flask, render_template, redirect, request, url_for
+from flask import Flask, render_template, redirect, request, url_for, session
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 
 app = Flask(__name__)
+app.secret_key = "cookbook321"
 
 app.config["MONGO_DBNAME"] ='cook_book'
 app.config["MONGO_URI"] = 'mongodb+srv://AnetA:AnetA2@myfirstcluster-sfmlq.mongodb.net/cook_book?retryWrites=true&w=majority'
@@ -12,12 +13,14 @@ mongo = PyMongo(app)
 
 
 
-
-
+@app.route('/')
+def login():
+  return render_template('loginpage.html')
+  
+  
 #--------------------------Find Recipes Page------------------
 
 
-@app.route('/')
 @app.route('/find_recipes')
 def find_recipes():
   return render_template("recipes.html", recipes=mongo.db.recipes.find())
@@ -41,7 +44,7 @@ def insert_recipe():
   return redirect(url_for('find_recipes'))
   
   
-#-------Enable To View Particular Recipe----------------------
+#----------------Enable To View Particular Recipe--------------
   
   
 @app.route('/view_recipe/<recipe_id>')
@@ -83,7 +86,6 @@ def update_recipe(recipe_id):
     'cooking_time': request.form.get('cooking_time')
   })
     
-  
   return redirect(url_for('find_recipes'))
   
   
@@ -109,6 +111,24 @@ def find_categories():
   return render_template('categories.html', categories=mongo.db.categories.find())
   
   
+#------------------------Add Category Page------------------------
+
+
+@app.route('/new_category')
+def new_category():
+  return render_template('addcategory.html')
+  
+
+#-------Enable To Add Category And Redirect To Categories Page-----
+
+
+@app.route('/add_category', methods=['POST'])
+def add_category():
+  my_category = {'category_name': request.form.get('category_name')}
+  mongo.db.categories.insert_one(my_category)
+  return redirect(url_for('find_categories'))
+  
+  
 #-------------------Edit Category Page---------------------------
 
   
@@ -125,22 +145,6 @@ def update_category(category_id):
   mongo.db.categories.update({'_id': ObjectId(category_id)}, {'category_name': request.form.get('category_name')})
   return redirect(url_for('find_categories'))
   
-
-#-------Enable To Add Category And Redirect To Categories Page-----
-
-
-@app.route('/add_category', methods=['POST'])
-def add_category():
-  my_category = {'category_name': request.form.get('category_name')}
-  mongo.db.categories.insert_one(my_category)
-  return redirect(url_for('find_categories'))
-  
-#--------------------------Add Category Page------------------------
-
-
-@app.route('/new_category')
-def new_category():
-  return render_template('addcategory.html')
   
 #--------------------Enable To Delete Category----------------------
   
