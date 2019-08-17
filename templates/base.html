@@ -8,7 +8,7 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
         <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}" type="text/css" />
-        <link rel="stylesheet" href="{{url_for('static', filename='images/online_book.jpg')}}" type="text/css" />                  
+        <link rel="stylesheet" href="{{url_for('static', filename='images/cooking-tools.jpg')}}" type="text/css" />                  
         <title>COOK BOOK</title>
     </head>
     <body>
@@ -23,12 +23,12 @@
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                             </button>
-                            <a class="navbar-brand" href="{{url_for('get_recipes')}}">COOK BOOK</a>
+                            <a class="navbar-brand" href="{{url_for('find_recipes')}}">COOK BOOK</a>
                         </div>
                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                             <ul class="nav navbar-nav navbar-right">
-                                <li><a href="{{url_for('get_recipes')}}">HOME</a></li>
-                                <li><a href="{{url_for('get_categories')}}">CATEGORIES</a></li>
+                                <li><a href="{{url_for('find_recipes')}}">HOME</a></li>
+                                <li><a href="{{url_for('find_categories')}}">CATEGORIES</a></li>
                             </ul>
                     </div>
                  </div>

@@ -13,10 +13,17 @@ mongo = PyMongo(app)
 
 
 
+
+#--------------------------Find Recipes Page------------------
+
+
 @app.route('/')
-@app.route('/get_recipes')
-def get_recipes():
+@app.route('/find_recipes')
+def find_recipes():
   return render_template("recipes.html", recipes=mongo.db.recipes.find())
+  
+  
+#--------------------------Add Recipes Page-------------------
   
   
 @app.route('/add_recipe')
@@ -24,11 +31,17 @@ def add_recipe():
   return render_template('addrecipe.html', categories=mongo.db.categories.find())
   
   
+#-------Enable To Add Recipe and Redirect To Recipe Page------
+  
+  
 @app.route('/insert_recipe', methods=['POST'])
 def insert_recipe():
   recipes=mongo.db.recipes
   recipes.insert_one(request.form.to_dict())
-  return redirect(url_for('get_recipes'))
+  return redirect(url_for('find_recipes'))
+  
+  
+#-------Enable To View Particular Recipe----------------------
   
   
 @app.route('/view_recipe/<recipe_id>')
@@ -37,6 +50,9 @@ def view_recipe(recipe_id):
   my_categories = mongo.db.categories.find()
   return render_template('viewrecipe.html', recipe=my_recipe,
                            categories=my_categories)
+                           
+                           
+#--------------Enable To Edit Particular Recipe----------------
   
 
 @app.route('/edit_recipe/<recipe_id>')
@@ -46,6 +62,9 @@ def edit_recipe(recipe_id):
   return render_template('editrecipe.html', recipe=this_recipe,
                             categories=all_categories)
                             
+                            
+#-----Enable To Update Recipe And Redirect To Recipe Page-------
+
                             
 @app.route('/update_recipe/<recipe_id>', methods= ['POST'])
 def update_recipe(recipe_id):
@@ -65,51 +84,71 @@ def update_recipe(recipe_id):
   })
     
   
-  return redirect(url_for('get_recipes'))
+  return redirect(url_for('find_recipes'))
+  
+  
+#----------------Enable To Delete Particular Recipe--------------
   
   
 @app.route('/delete_recipe/<recipe_id>')
 def delete_recipe(recipe_id):
   mongo.db.recipes.remove({'_id': ObjectId(recipe_id)})
-  return redirect(url_for('get_recipes'))
+  return redirect(url_for('find_recipes'))
   
+
+
+
+
   
 
-#-----------------------------------Categories-------------------
+#-------------------Find Categories Page------------------------
 
 
-
-@app.route('/get_categories')
-def get_categories():
+@app.route('/find_categories')
+def find_categories():
   return render_template('categories.html', categories=mongo.db.categories.find())
+  
+  
+#-------------------Edit Category Page---------------------------
+
   
 @app.route('/edit_category/<category_id>')
 def edit_category(category_id):
   return render_template('editcategory.html', category=mongo.db.categories.find_one({'_id': ObjectId(category_id)}))
   
+  
+#----Enable To Update Category And Redirect To Categories Page----
+  
 
 @app.route('/update_category/<category_id>', methods=['POST'])
 def update_category(category_id):
   mongo.db.categories.update({'_id': ObjectId(category_id)}, {'category_name': request.form.get('category_name')})
-  return redirect(url_for('get_categories'))
-
+  return redirect(url_for('find_categories'))
   
+
+#-------Enable To Add Category And Redirect To Categories Page-----
+
+
 @app.route('/add_category', methods=['POST'])
 def add_category():
   my_category = {'category_name': request.form.get('category_name')}
   mongo.db.categories.insert_one(my_category)
-  return redirect(url_for('get_categories'))
+  return redirect(url_for('find_categories'))
   
+#--------------------------Add Category Page------------------------
+
 
 @app.route('/new_category')
 def new_category():
   return render_template('addcategory.html')
   
+#--------------------Enable To Delete Category----------------------
+  
 
 @app.route('/delete_category/<category_id>')
 def delete_category(category_id):
   mongo.db.categories.remove({'_id': ObjectId(category_id)})
-  return redirect(url_for('get_categories'))
+  return redirect(url_for('find_categories'))
   
 
 

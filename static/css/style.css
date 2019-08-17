@@ -1,10 +1,9 @@
-
-
 body {
-    background: url("../images/online_book.jpg");
+    background: url("../images/cooking-tools.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    position: relative;
 }
 
 
@@ -12,7 +11,7 @@ h3, h6 {
     text-align: center;
 }
 
-/*-------------------------Home Page Small Buttons--------------------*/
+/*-------------------------Small Buttons--------------------*/
 
 .button {
     height: 24px;
@@ -27,26 +26,37 @@ h3, h6 {
     text-align: right;
 }
 
-.view-button {
+.view-button, .edit-button {
     background-color: #5DADE2;
+}
+
+.view-button:hover, .edit-button:hover {
+    background-color: #2E86C1;
+    color: white;
 }
 
 .remove-button {
     background-color: #EC7063; 
 }
 
+.remove-button:hover {
+    background-color: #CB4335;
+    color: white;
+}
+
+
+
 
 /*-------------------------Big Buttons---------------*/
 
-.add_recipe_button {
-    text-align: center;
-}
-.update_recipe_button {
-    text-align: center;
-}
+
+
+.add_recipe_button,
+.update_recipe_button,
 .edit_recipe_button {
     text-align: center;
 }
+
 
 
 /*-------------------------Navbar-------------------------*/
