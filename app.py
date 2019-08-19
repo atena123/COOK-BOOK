@@ -12,10 +12,23 @@ app.config["MONGO_URI"] = 'mongodb+srv://AnetA:AnetA2@myfirstcluster-sfmlq.mongo
 mongo = PyMongo(app)
 
 
+#--------------------Login Page------------------------------
 
-@app.route('/')
+
+@app.route('/', methods = ["GET", "POST"])
 def login():
-  return render_template('loginpage.html')
+  
+  if request.method == "POST":
+    session["username"] = request.form["username"]
+    
+  if "username" in session:
+    return redirect(session["username"])
+    
+  return render_template('login.html')
+  
+@app.route('/<username>')
+def user(username):
+  return render_template('recipes.html')
   
   
 #--------------------------Find Recipes Page------------------
@@ -31,7 +44,9 @@ def find_recipes():
   
 @app.route('/add_recipe')
 def add_recipe():
-  return render_template('addrecipe.html', categories=mongo.db.categories.find())
+  all_categories = mongo.db.categories.find()
+  all_cusines = mongo.db.cusines.find()
+  return render_template('addrecipe.html', categories=all_categories, cusines=all_cusines)
   
   
 #-------Enable To Add Recipe and Redirect To Recipe Page------
@@ -50,9 +65,7 @@ def insert_recipe():
 @app.route('/view_recipe/<recipe_id>')
 def view_recipe(recipe_id):
   my_recipe =  mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
-  my_categories = mongo.db.categories.find()
-  return render_template('viewrecipe.html', recipe=my_recipe,
-                           categories=my_categories)
+  return render_template('viewrecipe.html', recipe=my_recipe)
                            
                            
 #--------------Enable To Edit Particular Recipe----------------
@@ -62,8 +75,9 @@ def view_recipe(recipe_id):
 def edit_recipe(recipe_id):
   this_recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
   all_categories = mongo.db.categories.find()
+  all_cusines = mongo.db.cusines.find()
   return render_template('editrecipe.html', recipe=this_recipe,
-                            categories=all_categories)
+                            categories=all_categories, cusines=all_cusines)
                             
                             
 #-----Enable To Update Recipe And Redirect To Recipe Page-------
@@ -154,6 +168,12 @@ def delete_category(category_id):
   mongo.db.categories.remove({'_id': ObjectId(category_id)})
   return redirect(url_for('find_categories'))
   
+
+#--------------------Find Cusines Page-------------------------------
+
+@app.route('/find_cusines')
+def find_cusines():
+  return render_template('cusines.html', cusines=mongo.db.cusines.find())
 
 
 if __name__ == '__main__':

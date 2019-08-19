@@ -69,8 +69,13 @@
                 
                 <div class="input-field col s3">
                     <i class="material-icons prefix">poll</i>
-                    <input id="cusine_name" name="cusine_name" type="text" class="validate">
-                    <label for="icon_prefix">Cusine</label>
+                    <select id="cusine" name="cusine_name">
+                      <option value="" disabled selected>Choose Cusine</option>
+                  {% for cusine in cusines %}
+                      <option value="{{cusine.cusine_name}}">{{cusine.cusine_name}}</option>
+                  {% endfor %}
+                    </select>
+                    <label>Choose Your Cusine</label>
                 </div>
             </div>
             <div class="row add_recipe_button">

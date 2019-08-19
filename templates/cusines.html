@@ -1,0 +1,26 @@
+{% extends 'base.html' %} 
+
+    {% block content %}
+    
+    <h3>CUSINES</h3>
+    
+    <div class="row">
+    <a href="" class="waves-effect waves-light btn"><i class="material-icons right">edit</i>ADD CATEGORY</a>
+    </div>    
+    <ul class="collapsible" data-collapsible="accordion">
+      {% for cusine in cusines %}
+    <li>
+      <div class="collapsible-header">
+        <div class="col-md-12">
+        <strong>{{cusine.cusine_name}}</strong>
+        </div>
+        <div class="col-md-12 small-buttons">
+        <a href="" class="waves-effect waves-light btn button edit-button">EDIT</a>
+        <a href="" class="waves-effect waves-light btn button remove-button">REMOVE</a>
+        </div>
+      </div>
+    </li>
+      {% endfor %}
+    </ul>
+    
+    {% endblock %}
