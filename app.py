@@ -31,8 +31,9 @@ def user(username):
   return render_template('recipes.html')
   
   
+  
+  
 #--------------------------Find Recipes Page------------------
-
 
 @app.route('/find_recipes')
 def find_recipes():
@@ -40,7 +41,6 @@ def find_recipes():
   
   
 #--------------------------Add Recipes Page-------------------
-  
   
 @app.route('/add_recipe')
 def add_recipe():
@@ -51,7 +51,6 @@ def add_recipe():
   
 #-------Enable To Add Recipe and Redirect To Recipe Page------
   
-  
 @app.route('/insert_recipe', methods=['POST'])
 def insert_recipe():
   recipes=mongo.db.recipes
@@ -61,7 +60,6 @@ def insert_recipe():
   
 #----------------Enable To View Particular Recipe--------------
   
-  
 @app.route('/view_recipe/<recipe_id>')
 def view_recipe(recipe_id):
   my_recipe =  mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
@@ -70,7 +68,6 @@ def view_recipe(recipe_id):
                            
 #--------------Enable To Edit Particular Recipe----------------
   
-
 @app.route('/edit_recipe/<recipe_id>')
 def edit_recipe(recipe_id):
   this_recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
@@ -82,7 +79,6 @@ def edit_recipe(recipe_id):
                             
 #-----Enable To Update Recipe And Redirect To Recipe Page-------
 
-                            
 @app.route('/update_recipe/<recipe_id>', methods= ['POST'])
 def update_recipe(recipe_id):
   recipes=mongo.db.recipes
@@ -105,7 +101,6 @@ def update_recipe(recipe_id):
   
 #----------------Enable To Delete Particular Recipe--------------
   
-  
 @app.route('/delete_recipe/<recipe_id>')
 def delete_recipe(recipe_id):
   mongo.db.recipes.remove({'_id': ObjectId(recipe_id)})
@@ -119,7 +114,6 @@ def delete_recipe(recipe_id):
 
 #-------------------Find Categories Page------------------------
 
-
 @app.route('/find_categories')
 def find_categories():
   return render_template('categories.html', categories=mongo.db.categories.find())
@@ -127,14 +121,12 @@ def find_categories():
   
 #------------------------Add Category Page------------------------
 
-
 @app.route('/new_category')
 def new_category():
   return render_template('addcategory.html')
   
 
 #-------Enable To Add Category And Redirect To Categories Page-----
-
 
 @app.route('/add_category', methods=['POST'])
 def add_category():
@@ -145,7 +137,6 @@ def add_category():
   
 #-------------------Edit Category Page---------------------------
 
-  
 @app.route('/edit_category/<category_id>')
 def edit_category(category_id):
   return render_template('editcategory.html', category=mongo.db.categories.find_one({'_id': ObjectId(category_id)}))
@@ -153,7 +144,6 @@ def edit_category(category_id):
   
 #----Enable To Update Category And Redirect To Categories Page----
   
-
 @app.route('/update_category/<category_id>', methods=['POST'])
 def update_category(category_id):
   mongo.db.categories.update({'_id': ObjectId(category_id)}, {'category_name': request.form.get('category_name')})
@@ -162,7 +152,6 @@ def update_category(category_id):
   
 #--------------------Enable To Delete Category----------------------
   
-
 @app.route('/delete_category/<category_id>')
 def delete_category(category_id):
   mongo.db.categories.remove({'_id': ObjectId(category_id)})
@@ -189,11 +178,13 @@ def find_cusines():
 def edit_cusine(cusine_id):
   return render_template('editcusine.html', cusine=mongo.db.cusines.find_one({'_id': ObjectId(cusine_id)}))
   
+  
 #---------------------Add Cusine Page-------------------------------
 
 @app.route('/add_cusine')
 def add_cusine():
   return render_template('addcusine.html')
+  
   
 #------------Enable To Add Cusine And Redirect To Cusines Page------
 
@@ -203,11 +194,20 @@ def new_cusine():
   mongo.db.cusines.insert_one(my_cusine)
   return redirect(url_for('find_cusines'))
   
+  
 #--------Enable To Update Cusine And Redirect To Cusines Page-------
 
 @app.route('/update_cusine/<cusine_id>', methods=['POST'])
 def update_cusine(cusine_id):
   mongo.db.cusines.update({'_id': ObjectId(cusine_id)}, {'cusine_name': request.form.get('cusine_name')})
+  return redirect(url_for('find_cusines'))
+  
+  
+#---------Enable To Delete Cusine-----------------------------------
+
+@app.route('/delete_cusine/<cusine_id>')
+def delete_cusine(cusine_id):
+  mongo.db.cusines.remove({'_id': ObjectId(cusine_id)})
   return redirect(url_for('find_cusines'))
 
 
