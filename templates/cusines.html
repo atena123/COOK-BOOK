@@ -5,7 +5,7 @@
     <h3>CUSINES</h3>
     
     <div class="row">
-    <a href="" class="waves-effect waves-light btn"><i class="material-icons right">edit</i>ADD CATEGORY</a>
+    <a href="{{url_for('add_cusine')}}" class="waves-effect waves-light btn"><i class="material-icons right">edit</i>ADD CUSINE</a>
     </div>    
     <ul class="collapsible" data-collapsible="accordion">
       {% for cusine in cusines %}
@@ -15,7 +15,7 @@
         <strong>{{cusine.cusine_name}}</strong>
         </div>
         <div class="col-md-12 small-buttons">
-        <a href="" class="waves-effect waves-light btn button edit-button">EDIT</a>
+        <a href="{{url_for('edit_cusine', cusine_id=cusine._id)}}" class="waves-effect waves-light btn button edit-button">EDIT</a>
         <a href="" class="waves-effect waves-light btn button remove-button">REMOVE</a>
         </div>
       </div>

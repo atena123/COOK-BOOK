@@ -169,11 +169,40 @@ def delete_category(category_id):
   return redirect(url_for('find_categories'))
   
 
+
+
+
+
+
+  
+
 #--------------------Find Cusines Page-------------------------------
 
 @app.route('/find_cusines')
 def find_cusines():
   return render_template('cusines.html', cusines=mongo.db.cusines.find())
+  
+  
+#-----------------Edit Cusine Page---------------------------------
+
+@app.route('/edit_cusine/<cusine_id>')
+def edit_cusine(cusine_id):
+  return render_template('editcusine.html', cusine=mongo.db.cusines.find_one({'_id': ObjectId(cusine_id)}))
+  
+#---------------------Add Cusine Page-------------------------------
+
+@app.route('/add_cusine')
+def add_cusine():
+  return render_template('addcusine.html')
+  
+#------------Enable To Add Cusine And Redirect To Cusines Page------
+
+@app.route('/new_cusine', methods=['POST'])
+def new_cusine():
+  my_cusine = {'cusine_name': request.form.get('cusine_name')}
+  mongo.db.cusines.insert_one(my_cusine)
+  return redirect(url_for('find_cusines'))
+
 
 
 if __name__ == '__main__':
