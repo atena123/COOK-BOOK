@@ -202,6 +202,13 @@ def new_cusine():
   my_cusine = {'cusine_name': request.form.get('cusine_name')}
   mongo.db.cusines.insert_one(my_cusine)
   return redirect(url_for('find_cusines'))
+  
+#--------Enable To Update Cusine And Redirect To Cusines Page-------
+
+@app.route('/update_cusine/<cusine_id>', methods=['POST'])
+def update_cusine(cusine_id):
+  mongo.db.cusines.update({'_id': ObjectId(cusine_id)}, {'cusine_name': request.form.get('cusine_name')})
+  return redirect(url_for('find_cusines'))
 
 
 
