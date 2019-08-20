@@ -1,14 +1,13 @@
 body {
-    background: url("../images/cooking-tools.jpg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    position: relative;
+    background-color: #FBEEE6;
 }
-
 
 h3, h6 {
     text-align: center;
+}
+
+h6 {
+    padding-bottom: 40px;
 }
 
 h1 {
@@ -33,7 +32,12 @@ h1 {
 }
 
 .small-headings {
-    padding-top: 20px;
+    padding-top: 40px;
+}
+
+.small-headings p {
+    color: #E67E22;
+    font-weight: bold;
 }
 
 /*-------------------------Small Buttons--------------------*/
@@ -75,7 +79,6 @@ h1 {
 /*-------------------------Big Buttons---------------*/
 
 
-
 .add_recipe_button,
 .update_recipe_button {
     text-align: center;
@@ -95,7 +98,7 @@ h1 {
 }
 
 .bg-color-navbar {
-    background-color: #CD853F;
+    background-color: #E67E22;
     height: 65px;
 }
 

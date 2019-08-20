@@ -5,6 +5,31 @@
     
     <h3>{{recipe.recipe_name}}</h3>
     
+    
+    <div class="row small-headings">
+        <div class="col s6 heading">
+        <p>CUSINE: {{recipe.cusine_name}}</p> 
+        </div>
+        <div class="col s6 heading">
+        <p>CATEGORY: {{recipe.category_name}}</p>
+        </div>
+    </div>
+    
+    <div class="row">
+        <p class="large-heading">DESCRIPTION:</p>
+        {{recipe.recipe_description}}
+    </div>
+    
+     <div class="row">   
+        <p class="large-heading">INGREDIENTS:</p> 
+        {{recipe.recipe_ingredients}}
+    </div>
+        
+     <div class="row">  
+        <p class="large-heading">METHOD:</p>
+        {{recipe.recipe_method}}
+    </div>
+        
     <div class="row small-headings">
         <div class="col s4 heading">
         <p>PREPARATION TIME: {{recipe.preparation_time}}</p>
@@ -16,32 +41,12 @@
         <p>SERVINGS: {{recipe.recipe_servings}}</p>
         </div>
     </div>
-    
-    
-    <div class="row">
-        <div class="col s6 heading">
-        <p>CUSINE: {{recipe.cusine_name}}</p> 
-        </div>
-        <div class="col s6 heading">
-        <p>CATEGORY: {{recipe.category_name}}</p>
-        </div>
-    </div>
-        
-        <p class="large-heading">DESCRIPTION:</p>
-        {{recipe.recipe_description}}
-    
-        
-        <p class="large-heading">INGREDIENTS:</p> 
-        {{recipe.recipe_ingredients}}
-        
-        
-        <p class="large-heading">METHOD:</p>
-        {{recipe.recipe_method}}
         
     
     
     <div class="row edit_recipe_button">
     <a href="{{url_for('edit_recipe', recipe_id=recipe._id)}}" class="waves-effect waves-light btn"><i class="material-icons right">edit</i>EDIT RECIPE</a>
+    <a href="{{url_for('delete_recipe', recipe_id=recipe._id)}}" class="waves-effect waves-light btn button remove-button">REMOVE</a>
     </div>
     
     {% endblock %}
