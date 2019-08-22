@@ -26,7 +26,7 @@
     </div>
     <!--/.Search By Category Button-->
     
-    <!--Recipes Lists-->    
+    <!--List Of Recipes-->    
     <ul class="collapsible" data-collapsible="accordion">
       {% for recipe in recipes %}
       <li>
@@ -36,13 +36,13 @@
         </div>
         
         <!--View Button-->
-          <div class="col-md-12 small-buttons">
+          <div class="col-md-12 col-xs-12 small-buttons">
           <a href="{{url_for('view_recipe', recipe_id=recipe._id)}}" class="waves-effect waves-light btn button view-button">VIEW</a>
           </div>
         <!--/.View Button-->
       </li>
       {% endfor %}
     </ul>
-    <!--/.Recipes Lists-->
+    <!--/.List Of Recipes-->
     
     {% endblock %}
