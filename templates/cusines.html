@@ -4,23 +4,28 @@
     
     <h3>CUSINES</h3>
     
+    <!--Add Cusine Button-->
     <div class="row">
     <a href="{{url_for('add_cusine')}}" class="waves-effect waves-light btn"><i class="material-icons right">edit</i>ADD CUSINE</a>
-    </div>    
+    </div>
+    <!--/.Add Cusine Button-->
+    
+    <!--List Of Cusines-->
     <ul class="collapsible" data-collapsible="accordion">
       {% for cusine in cusines %}
-    <li>
-      <div class="collapsible-header">
-        <div class="col-md-12">
-        <strong>{{cusine.cusine_name}}</strong>
+      <li>
+        <div class="collapsible-header">
+          <div class="col-md-12">
+          <strong>{{cusine.cusine_name}}</strong>
+          </div>
+          <div class="col-md-12 small-buttons">
+          <a href="{{url_for('edit_cusine', cusine_id=cusine._id)}}" class="waves-effect waves-light btn button edit-button">EDIT</a>
+          <a href="{{url_for('delete_cusine', cusine_id=cusine._id)}}" class="waves-effect waves-light btn button remove-button">REMOVE</a>
+          </div>
         </div>
-        <div class="col-md-12 small-buttons">
-        <a href="{{url_for('edit_cusine', cusine_id=cusine._id)}}" class="waves-effect waves-light btn button edit-button">EDIT</a>
-        <a href="{{url_for('delete_cusine', cusine_id=cusine._id)}}" class="waves-effect waves-light btn button remove-button">REMOVE</a>
-        </div>
-      </div>
-    </li>
+      </li>
       {% endfor %}
     </ul>
+    <!--/.List Of Cusines-->
     
     {% endblock %}

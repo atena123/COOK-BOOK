@@ -7,33 +7,42 @@
     <h6>The recipes are all listed below. Add a recipe if you wish. To see a recipe just click on the 'view' button. To remove 
     a recipe from the collection, click the 'remove' button</h6>
     
-    
+    <!--Add New Recipe Button-->
     <div class="row">
-        <a href="{{url_for('add_recipe')}}" class="waves-effect waves-light btn"><i class="material-icons right add-new-recipe-button">edit</i>ADD NEW RECIPE</a>
+      <a href="{{url_for('add_recipe')}}" class="waves-effect waves-light btn"><i class="material-icons right add-new-recipe-button">edit</i>ADD NEW RECIPE</a>
+    <!--/.Add New Recipe Button-->
+    
+    <!--Search By Category Button-->
         <div class="btn-group">
           <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Search By Categories <span class="caret"></span>
           </button>
-            <ul class="dropdown-menu">
+          <ul class="dropdown-menu">
             {% for category in categories %}
-              <li><a href="">{{category.category_name}}</a></li>
+            <li><a href="">{{category.category_name}}</a></li>
             {% endfor %}
-            </ul>
+          </ul>
         </div>
-    </div>   
-        
+    </div>
+    <!--/.Search By Category Button-->
+    
+    <!--Recipes Lists-->    
     <ul class="collapsible" data-collapsible="accordion">
       {% for recipe in recipes %}
       <li>
         <div class="collapsible-header">
           <div class="col-md-12">
-            <strong>{{recipe.recipe_name}}</strong> - {{recipe.category_name}}
+          <strong>{{recipe.recipe_name}}</strong> - {{recipe.category_name}}
         </div>
+        
+        <!--View Button-->
           <div class="col-md-12 small-buttons">
-            <a href="{{url_for('view_recipe', recipe_id=recipe._id)}}" class="waves-effect waves-light btn button view-button">VIEW</a>
+          <a href="{{url_for('view_recipe', recipe_id=recipe._id)}}" class="waves-effect waves-light btn button view-button">VIEW</a>
           </div>
+        <!--/.View Button-->
       </li>
       {% endfor %}
     </ul>
+    <!--/.Recipes Lists-->
     
     {% endblock %}
