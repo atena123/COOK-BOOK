@@ -4,8 +4,7 @@
     
     <h3>RECIPES</h3>
     
-    <h6>The recipes are all listed below. Add a recipe if you wish. To see a recipe just click on the 'view' button. To remove 
-    a recipe from the collection, click the 'remove' button</h6>
+    <h6>The recipes are all listed below. Add a recipe if you wish. To see a recipe just click on the 'view' button.</h6>
     
     <!--Add New Recipe Button-->
     <div class="row">
@@ -19,7 +18,7 @@
           </button>
           <ul class="dropdown-menu">
             {% for category in categories %}
-            <li><a href="">{{category.category_name}}</a></li>
+            <li><a href="{{url_for('find_recipes_by_category', category=category.category_name)}}">{{category.category_name}}</a></li>
             {% endfor %}
           </ul>
         </div>
