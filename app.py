@@ -7,9 +7,10 @@ app = Flask(__name__)
 app.secret_key = "cookbook321"
 
 app.config["MONGO_DBNAME"] ='cook_book'
-app.config["MONGO_URI"] = 'mongodb+srv://AnetA:AnetA2@myfirstcluster-sfmlq.mongodb.net/cook_book?retryWrites=true&w=majority'
+app.config["MONGO_URI"]=os.environ.get('MONGO_URI')
 
 mongo = PyMongo(app)
+
 
 
                 
@@ -17,16 +18,13 @@ mongo = PyMongo(app)
 
 #-------------RECIPES-------------
 
+
+        
 @app.route('/')
 @app.route('/find_recipes')
 def find_recipes():
         """Find Recipe Page"""
         return render_template("recipes.html", recipes=mongo.db.recipes.find(), categories=mongo.db.categories.find())
-        
-@app.route('/find_recipes/<category>')
-def find_recipes_by_category(category):
-        """Find Recipe By Category"""
-        return render_template("recipes.html", recipes=mongo.db.recipes.find({'category_name': category}), categories=mongo.db.categories.find())
 
   
 @app.route('/add_recipe')
@@ -35,6 +33,11 @@ def add_recipe():
         all_categories = mongo.db.categories.find()
         all_cusines = mongo.db.cusines.find()
         return render_template('add_recipe.html', categories=all_categories, cusines=all_cusines)
+        
+@app.route('/find_recipes/<category>')
+def find_recipes_by_category(category):
+        """Find Recipe Page"""
+        return render_template("recipes.html", recipes=mongo.db.recipes.find({"category_name":category}), categories=mongo.db.categories.find())
 
   
 @app.route('/insert_recipe', methods=['POST'])
@@ -48,6 +51,7 @@ def insert_recipe():
 @app.route('/view_recipe/<recipe_id>')
 def view_recipe(recipe_id):
         """Enable To View Particular Recipe"""
+        recipes =  mongo.db.recipes
         my_recipe =  mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
         return render_template('view_recipe.html', recipe=my_recipe)
 
