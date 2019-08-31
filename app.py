@@ -19,7 +19,6 @@ mongo = PyMongo(app)
 #-------------RECIPES-------------
 
 
-        
 @app.route('/')
 @app.route('/find_recipes')
 def find_recipes():
@@ -33,6 +32,7 @@ def add_recipe():
         all_categories = mongo.db.categories.find()
         all_cusines = mongo.db.cusines.find()
         return render_template('add_recipe.html', categories=all_categories, cusines=all_cusines)
+        
         
 @app.route('/find_recipes/<category>')
 def find_recipes_by_category(category):
