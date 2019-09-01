@@ -1,7 +1,9 @@
 import os
-from flask import Flask, render_template, redirect, request, url_for, session
+from flask import Flask, render_template, redirect, request, url_for, make_response
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
+import time
+
 
 app = Flask(__name__)
 app.secret_key = "cookbook321"
@@ -18,11 +20,24 @@ mongo = PyMongo(app)
 
 #-------------RECIPES-------------
 
-
+@app.route('/')
+def show_login():
+        return render_template('login.html')
+        
+        
+@app.route('/user_login', methods=['POST'])
+def user_login():
+        res = make_response(redirect(url_for('find_recipes')))
+        res.set_cookie('user_login', str(time.time()))
+        return res
+        
+        
 @app.route('/')
 @app.route('/find_recipes')
 def find_recipes():
         """Find Recipe Page"""
+        res = request.cookies.get('user_login')
+        print(res)
         return render_template("recipes.html", recipes=mongo.db.recipes.find(), categories=mongo.db.categories.find())
 
   
