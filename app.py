@@ -1,8 +1,7 @@
 import os
-from flask import Flask, render_template, redirect, request, url_for, make_response
+from flask import Flask, render_template, redirect, request, url_for, session
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
-import time
 
 
 app = Flask(__name__)
@@ -18,29 +17,57 @@ mongo = PyMongo(app)
                 
 
 
-#-------------RECIPES-------------
+#-------------Registration & Login-------------
 
 @app.route('/')
-def show_login():
-        return render_template('login.html')
+def index():
+        return render_template('index.html')
+        
+                
+@app.route('/login', methods=['POST'])
+def login():
+        users = mongo.db.users
+        login_user = users.find_one({'name': request.form['username']})
+        
+        if login_user:
+                if request.form['pass'] and login_user['password'] == login_user['password']:
+                        session['username'] = request.form['username']
+                        return redirect(url_for('find_recipes'))
+                        
+        return redirect(url_for('register'))
         
         
-@app.route('/user_login', methods=['POST'])
-def user_login():
-        res = make_response(redirect(url_for('find_recipes')))
-        res.set_cookie('user_login', str(time.time()))
-        return res
+        
+@app.route('/register', methods=['POST', 'GET'])
+def register():
+        if request.method == 'POST':
+            users = mongo.db.users
+            existing_user = users.find_one({'name': request.form['username']})
+            
+            if existing_user is None:
+                    hashpass = request.form['pass']
+                    users.insert({'name': request.form['username'], 'password': hashpass})
+                    session['username'] = request.form['username']
+                    return redirect(url_for('index'))
+                    
+            return 'Username already exist'
+                
+        return render_template('register.html')
         
         
-@app.route('/')
+        
+        
+        
+        
+        
+#-------------RECIPES-------------
+
 @app.route('/find_recipes')
 def find_recipes():
         """Find Recipe Page"""
-        res = request.cookies.get('user_login')
-        print(res)
         return render_template("recipes.html", recipes=mongo.db.recipes.find(), categories=mongo.db.categories.find())
-
-  
+                
+                
 @app.route('/add_recipe')
 def add_recipe():
         """Add Recipe Page"""
@@ -96,7 +123,8 @@ def update_recipe(recipe_id):
         'preparation_time': request.form.get('preparation_time'),
         'recipe_servings': request.form.get('recipe_servings'),
         'cusine_name': request.form.get('cusine_name'),
-        'cooking_time': request.form.get('cooking_time')
+        'cooking_time': request.form.get('cooking_time'),
+        'name': request.form.get('name')
         })
     
         return redirect(url_for('find_recipes'))
