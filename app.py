@@ -78,7 +78,7 @@ def add_recipe():
         
 @app.route('/find_recipes/<category>')
 def find_recipes_by_category(category):
-        """Find Recipe Page"""
+        """Find Recipe By Category"""
         return render_template("recipes.html", recipes=mongo.db.recipes.find({"category_name":category}), categories=mongo.db.categories.find())
 
   
