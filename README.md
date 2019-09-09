@@ -26,7 +26,7 @@ As a user you can:
 
 ### Design
 
-I created this website using Bootstrap. This app contain register page where new user is able to register, login page where user is able to login, home page
+I created this website using Bootstrap and Materialize. This app contain register page where new user is able to register, login page where user is able to login, home page
 with navbar, buttons, and lists of recipes when clicked it will lead to individual recipe page.
 
 ## WIREFRAMES
@@ -43,7 +43,7 @@ with navbar, buttons, and lists of recipes when clicked it will lead to individu
 
 * **Login page** - will allow user to login before using the application
 
-* **'COOK-BOOK' - logo** - when clicked it wiil always bring the user to the home page
+* **'COOK-BOOK' - logo** - when clicked it will always bring the user to the home page
 
 * **Navbar** - created to navigate particular list: (*recipes*, *categories* or *cusines*). Across the navbar the are links
 with names of the lists. When hoover over the link color will change. For smaller devices the navbar collapse 
@@ -57,11 +57,11 @@ into *burger icon*.
 
 * **'Edit Recipe' - button** - allows user to edit particular recipe and make changes
 
-* **'Remove' - button** - allows user to remove particualar button
+* **'Remove' - button** - allows user to remove particualar recipe
 
 ##### Features left to implement
 
-* Feature that will allow user remove only its own recipes - but not others users'.
+* Feature that will allow user remove only its own recipes - but not others users recipes.
 
 ## TECHNOLOGIES USED
 
