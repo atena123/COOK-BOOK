@@ -70,13 +70,13 @@
                 
           <div class="input-field col-md-3 col-xs-6">
             <i class="material-icons prefix">poll</i>
-              <select id="cusine" name="cusine_name">
-                <option value="" disabled selected>Choose Cusine</option>
-                 {% for cusine in cusines %}
-                <option value="{{cusine.cusine_name}}">{{cusine.cusine_name}}</option>
+              <select id="cuisine" name="cuisine_name">
+                <option value="" disabled selected>Choose Cuisine</option>
+                 {% for cuisine in cuisines %}
+                <option value="{{cuisine.cuisine_name}}">{{cuisine.cuisine_name}}</option>
                  {% endfor %}
               </select>
-                <label>Choose Your Cusine</label>
+                <label>Choose Your Cuisine</label>
           </div>
         </div>
         

@@ -31,9 +31,13 @@ with navbar, buttons, and lists of recipes when clicked it will lead to individu
 
 ## WIREFRAMES
 
+### wireframes for mobile
+
+![Wireframes for mobile](photos/mobile.cook_book.jpg)
+
 ### wireframes for desktop
 
-### wireframes for mobile
+![Wireframes for desktop](photos/desktop.cook_book.jpg)
 
 ## FEATURES
 
@@ -70,7 +74,7 @@ into *burger icon*.
 * **Bootstrap 3.3.7** - https://getbootstrap.com/docs/3.3/ bootstrap 3.3.7 used for responsive navbar, grid layout of the page;
 * **JQuery 3.3.1** - to assist the bootsrap
 * **Materialize 1.0.0** - https://materializecss.com/text-inputs.html used for imput fields
-* **Icon design** - ...
+* **Material Design Icons** - https://material.io/resources/icons/?style=baseline used to add icons to the input fields
 * **Heroku** - this application is hosted via heroku
 
 ##### Front-End Technologies
@@ -81,7 +85,7 @@ into *burger icon*.
 ##### Back-End Technologies
 
 * **Flask 1.1.1** - to construct and render templates
-* **Python** - used as the backend programming language
+* **Python 3.6.8** - used as the backend programming language
 * **MongoDB Atlas** - database used to storewebsite backend data
 * **PyMongo 3.8.0** - used for interacting with MongoDB database from Python
 * **Jinja** - to display back-end data to the front-end
