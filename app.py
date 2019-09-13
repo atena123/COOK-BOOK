@@ -1,11 +1,11 @@
 import os
-from flask import Flask, render_template, redirect, request, url_for, session
+from flask import Flask, render_template, redirect, request, url_for, session, flash
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 
+
 from dotenv import load_dotenv
 load_dotenv()
-
 
 app = Flask(__name__)
 app.secret_key =os.environ.get('SECRET_KEY')
@@ -22,6 +22,7 @@ mongo = PyMongo(app)
 
 #-------------Registration & Login-------------
 
+        
 @app.route('/')
 def index():
         return render_template('index.html')
@@ -53,17 +54,22 @@ def register():
                     session['username'] = request.form['username']
                     return redirect(url_for('index'))
                     
-            return 'Username already exist'
+            return render_template('register.html')
                 
         return render_template('register.html')
         
         
-        
+@app.route('/logout')
+def logout():
+        session.pop('username', None)
+        return redirect(url_for('index'))
+
         
         
         
         
 #-------------RECIPES-------------
+
 
 @app.route('/find_recipes')
 def find_recipes():
@@ -181,13 +187,6 @@ def update_category(category_id):
         """Enable To Update Category And Redirect To Cateories Page"""
         mongo.db.categories.update({'_id': ObjectId(category_id)}, {'category_name': request.form.get('category_name')})
         return redirect(url_for('find_categories'))
-
-  
-@app.route('/delete_category/<category_id>')
-def delete_category(category_id):
-        """Enable To Delete Category"""
-        mongo.db.categories.remove({'_id': ObjectId(category_id)})
-        return redirect(url_for('find_categories'))
   
 
 
@@ -228,13 +227,6 @@ def new_cuisine():
 def update_cuisine(cuisine_id):
         """Enable To Update Cuisine And Redirect To Cuisines Page""" 
         mongo.db.cuisines.update({'_id': ObjectId(cuisine_id)}, {'cuisine_name': request.form.get('cuisine_name')})
-        return redirect(url_for('find_cuisines'))
-
-
-@app.route('/delete_cuisine/<cuisine_id>')
-def delete_cuisine(cuisine_id):
-        """Enable To Delete Cuisine And Redirect To Cuisines Page"""
-        mongo.db.cuisines.remove({'_id': ObjectId(cuisine_id)})
         return redirect(url_for('find_cuisines'))
 
 
