@@ -121,10 +121,18 @@ In the terminal, I created a requirements.txt file using this command: pip freez
 In the terminal, I created a Procfile by running: echo web: python app.py > Procfile command.
 I push these files to my GitHub repository.
 I created a new app on Heroku dashboard, I named it 'COOK-BOOK and then I set the region.
+I linked Github repository to Heroku.
 I set the config vars as follows: IP 0.0.0.0 and PORT 5000.
-Then in the terminal I pushed my project to heroku using this command: git push heroku master.
 
 My app can be found at: https://mycook-book1.herokuapp.com/
+
+To run this project you need to do the following:
+
+* Go to Github repository and click on the 'clone or download' and copy the link https://github.com/atena123/COOK-BOOK.git.
+* Create virtual environment that helps to keep dependencies required by this project separate from other projects by creating isolated python virtual environments.
+* Install all required modules by creating requirements.txt file.
+* Create a .env file with the connection to MongoDB database, and a secret key.
+* You can run this application by following command: python3 app.py
 
 ## CREDIT
 
