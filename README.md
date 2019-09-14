@@ -65,7 +65,7 @@ into *burger icon*.
 
 ##### Features left to implement
 
-* Feature that will allow user remove only its own recipes - but not others users recipes.
+* Feature that will allow user remove or edit(make changes) only its own recipes - but not others users recipes.
 
 ## TECHNOLOGIES USED
 
@@ -94,6 +94,7 @@ into *burger icon*.
 ## TESTING
 
 This website had been tested on different devices such as: Desktop, Tablet, Mobile. I used Chrome DevTools to make sure it works on: Samsung Galaxy S5, iPhone 5/6/7/8, iPad, PC Desktop;
+
 
 ## TROUBLESHOOTING
 
